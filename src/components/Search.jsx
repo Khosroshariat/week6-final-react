@@ -1,12 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-
-
 const Search = () => {
     const [movies, setMovies] = useState([])
     const [searchType, setSearchType] = useState('')
-
 
     function filterMovie(filter) {
       console.log(filter)
@@ -30,7 +27,7 @@ const Search = () => {
       // using axios method
       const response = await axios.get(url)
       const data = response.data
-      // console.log(data)
+      console.log(data)
       if(data.Search) {
         setMovies(data.Search)
       }
@@ -70,7 +67,9 @@ const Search = () => {
                        {movies.map((movie, index) =>
                        <div className='movies_lists' key={index} >
                        <div className="movie__detail">
-                          <img className="movie__img" src={movie.Poster} alt='movie poster' />
+
+                          <img className="movie__img" src={movie.Poster || 'https://m.media-amazon.com/images/M/MV5BMTgzNzkxMzk5Nl5BMl5BanBnXkFtZTgwMTQ2MzA2MDE@._V1_SX300.jpg'} alt='movie poster' />
+
                           <h4 className='movie__details movie__title'>{movie.Title}</h4>
                           <h5 className='movie__details'>{movie.Year}</h5>
                           <h5 className='movie__details'>{movie.Type}</h5>
