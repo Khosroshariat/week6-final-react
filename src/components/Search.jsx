@@ -35,7 +35,7 @@ const Search = () => {
     useEffect(() => {
       setTimeout(() => {
         getMovieRequest(searchType)
-      }, 1000);
+      }, 2000);
     },[searchType])
   return (
     <>
@@ -48,6 +48,7 @@ const Search = () => {
                                 <input type="text" 
                                 placeholder="Search here" 
                                 className="search__input"
+                                value={searchType}
                                 onChange={(event) => setSearchType(event.target.value)}
                                 ></input>
                             </form>
