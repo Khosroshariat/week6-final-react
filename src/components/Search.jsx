@@ -1,21 +1,23 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Search = () => {
+  
     const [movies, setMovies] = useState([])
     const [searchType, setSearchType] = useState('')
 
     const getMovieRequest = async (searchType) => {
       const url = `http://www.omdbapi.com/?s=${searchType}&apikey=4d3b95cb`
       
-      // using fetch function :
+      // using fetch method :
       // const response = await fetch(url)
       // const data = await response.json()
       
       // using axios method
       const response = await axios.get(url)
       const data = response.data
-      console.log(data)
+
       if(data.Search) {
         setMovies(data.Search)
       }
@@ -29,7 +31,7 @@ const Search = () => {
     },[searchType])
 
     function filterMovie(filter) {
-      console.log(filter)
+
       if(filter === "NEW_TO_OLD") {
        setMovies( movies.slice(0, 6).sort((a, b) => b.Year - a.Year) )
       }
@@ -72,8 +74,9 @@ const Search = () => {
                        {movies.map((movie, index) =>
                        <div className='movies_lists' key={index} >
                        <div className="movie__detail">
-
+                        <Link to='../movie' >
                           <img className="movie__img" src={movie?.Poster} alt='movie poster' />
+                        </Link>
 
                           <h4 className='movie__details movie__title'>{movie.Title}</h4>
                           <h5 className='movie__details'>{movie.Year}</h5>

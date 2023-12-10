@@ -258,10 +258,19 @@ FILTER SELECTOR
 MOVIES 
 */
 
+.movie__info {
+    display: flex;
+    justify-content: center;
+}
+
+.movie__detail {
+    margin-left: 20px;
+}
+
 .movie__img {
     border-radius: 10px;
     overflow: hidden;
-    cursor: not-allowed;
+    cursor: pointer;
     width: 100%;
     max-width: 300px;
     transition: all 400ms ease;

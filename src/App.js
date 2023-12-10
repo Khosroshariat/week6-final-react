@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import Footer from './components/Footer'
 import Movies from "./pages/Movies";
+import Movie from "./pages/Movie";
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/movies" element={<Movies />} />
+      <Route path="/movie" element={<Movie />} />
     </Routes>
     <Footer />
     </div>
