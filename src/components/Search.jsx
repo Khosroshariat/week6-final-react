@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Search = () => {
-  
+
     const [movies, setMovies] = useState([])
     const [searchType, setSearchType] = useState('')
 
     const getMovieRequest = async (searchType) => {
-      const url = `http://www.omdbapi.com/?s=${searchType}&apikey=4d3b95cb`
+      const url = `http://www.omdbapi.com/?apikey=4d3b95cb&s=${searchType}`
       
       // using fetch method :
       // const response = await fetch(url)
@@ -74,7 +74,7 @@ const Search = () => {
                        {movies.map((movie, index) =>
                        <div className='movies_lists' key={index} >
                        <div className="movie__detail">
-                        <Link to='../movie' >
+                        <Link to={`/movie/${movie.imdbID}`} >
                           <img className="movie__img" src={movie?.Poster} alt='movie poster' />
                         </Link>
 

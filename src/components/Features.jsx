@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React,  { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 function Features()  {
@@ -8,13 +8,19 @@ function Features()  {
 
 
     async function getMovieInfo(imdbID) {
-
-        const {data} = await axios.get(`https://www.omdbapi.com/?i=${imdbID}&apikey=4d3b95cb`);
+      try {
+        const {data} = await axios.get(
+          `https://www.omdbapi.com/?i=${imdbID}&apikey=4d3b95cb`);
         setMovieInfo(data);
+      }catch(error) {
+        console.error('Error fetching movie info', error)
+      }
     }
 
     useEffect(() => {
-        getMovieInfo();
+      if(imdbID){
+        getMovieInfo(imdbID);
+      }
     }, [imdbID]);
   return (
     <>
